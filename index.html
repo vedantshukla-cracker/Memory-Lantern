@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lantern | Keep Memories Alive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="brand">
+                <div class="brand-icon">✦</div>
+                <div>
+                    <h2>Memory Lantern</h2>
+                    <span>A home for your memories</span>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <span class="privacy-label">🔒 Your memories stay private</span>
+                <div class="ai-status">
+                    <span id="aiDot" class="status-dot"></span>
+                    <span id="aiStatus">Checking local AI...</span>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="eyebrow">✧ PRESERVE WHAT MATTERS ✧</span>
+
+                    <h1>
+                        Every memory<br>
+                        deserves to <em>live forever.</em>
+                    </h1>
+
+                    <p>
+                        Some moments fade from photographs, but never
+                        from our hearts. Preserve your family stories,
+                        celebrate your loved ones and keep your memories alive.
+                    </p>
+
+                    <button class="primary-btn" onclick="document.getElementById('memoryTitle').focus()">
+                        + Save a Memory
+                    </button>
+                </div>
+
+                <div class="hero-decoration">
+                    <div class="lantern-circle">
+                        <div class="lantern">🏮</div>
+                        <span class="spark spark-one">✦</span>
+                        <span class="spark spark-two">✧</span>
+                        <span class="spark spark-three">✦</span>
+                    </div>
+                    <p>Stories connect generations.</p>
+                </div>
+            </section>
+
+            <!-- Statistics -->
+            <section class="stats-section">
+
+                <div class="stat-card">
+                    <span>📖</span>
+                    <div>
+                        <h2 id="totalMemories">0</h2>
+                        <p>Memories preserved</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <span>❤️</span>
+                    <div>
+                        <h2 id="totalPeople">0</h2>
+                        <p>People remembered</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <span>✨</span>
+                    <div>
+                        <h2 id="totalCategories">0</h2>
+                        <p>Story categories</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Main Workspace -->
+            <section class="workspace">
+
+                <!-- Add Memory Form -->
+                <div class="panel form-panel">
+
+                    <div class="section-heading">
+                        <span class="section-number">01 / WRITE</span>
+                        <h2>Capture a moment</h2>
+                        <p>Every little detail makes a story special.</p>
+                    </div>
+
+                    <form id="memoryForm">
+
+                        <label for="memoryTitle">Memory title *</label>
+                        <input type="text" id="memoryTitle" placeholder="e.g. A Sunday at Grandmother's house" required>
+
+                        <div class="form-row">
+
+                            <div>
+                                <label for="personName">Remembering someone</label>
+                                <input type="text" id="personName" placeholder="e.g. Grandmother">
+                            </div>
+
+                            <div>
+                                <label for="memoryDate">Date *</label>
+                                <input type="date" id="memoryDate" required>
+                            </div>
+
+                        </div>
+
+                        <label for="category">Memory category</label>
+                        <select id="category">
+                            <option value="Family">Family</option>
+                            <option value="Childhood">Childhood</option>
+                            <option value="Celebration">Celebration</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Tradition">Tradition</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="memoryStory">Your story *</label>
+                        <textarea id="memoryStory" rows="6"
+                            placeholder="Write down everything you remember. It doesn't have to be perfect..."
+                            required></textarea>
+
+                        <div class="ai-tip">
+                            <span>✦</span>
+                            Let AI help you turn your words into a beautiful story.
+                        </div>
+
+                        <button type="button" class="ai-btn" id="polishBtn">
+                            ✨ Polish Story with AI
+                        </button>
+
+                        <button type="submit" class="save-btn">
+                            Save Memory →
+                        </button>
+
+                        <p id="formMessage" class="message"></p>
+
+                    </form>
+                </div>
+
+                <!-- Memory Archive -->
+                <div class="panel archive-panel">
+
+                    <div class="section-heading">
+                        <span class="section-number">02 / REMEMBER</span>
+                        <h2>Your Memory Archive</h2>
+                        <p>A collection of moments worth keeping.</p>
+                    </div>
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="text" id="searchInput" placeholder="Search your memories...">
+                    </div>
+
+                    <div class="filter-row">
+                        <span>Explore by category</span>
+
+                        <select id="filterCategory">
+                            <option value="All">All memories</option>
+                            <option value="Family">Family</option>
+                            <option value="Childhood">Childhood</option>
+                            <option value="Celebration">Celebration</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Tradition">Tradition</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div id="memoryList" class="memory-list">
+
+                        <!-- JavaScript displays saved memories here -->
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- AI Memory Assistant -->
+            <section class="ai-section">
+
+                <div class="ai-heading">
+                    <span class="section-number">03 / DISCOVER</span>
+                    <h2>Talk to your memories.</h2>
+                    <p>
+                        Ask your AI memory assistant about the stories
+                        you have preserved.
+                    </p>
+                </div>
+
+                <div class="assistant-box">
+
+                    <div class="assistant-icon">✧</div>
+
+                    <div class="assistant-content">
+
+                        <h3>Your Memory Assistant</h3>
+
+                        <p class="assistant-description">
+                            Your local AI assistant can answer questions
+                            using your saved family memories.
+                        </p>
+
+                        <form id="askForm">
+
+                            <div class="question-box">
+                                <input type="text" id="questionInput" placeholder="Ask something about your memories..."
+                                    required>
+
+                                <button type="submit" id="askBtn">
+                                    Ask AI →
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <div id="aiAnswer" class="ai-answer" aria-live="polite">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-brand">✦ Memory Lantern</div>
+            <p>Made with love. Preserving stories for generations.</p>
+            <span>Powered by local AI · Built for memories that matter.</span>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
